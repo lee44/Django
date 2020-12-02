@@ -14,10 +14,9 @@ def home(request):
 def new_search(request):
     # search
     search = request.POST.get('search')
-    models.search.objects.create(search=search)
+    models.Search.objects.create(search=search)
     final_url = BASE_CRAIGSLIST_URL.format(quote_plus(search))
-    print(final_url)
-    response = requests.get(BASE_CRAIGSLIST_URL)
+    response = requests.get(final_url)
     data = response.text
     soup = BeautifulSoup(data,features='html.parser')
 
@@ -37,7 +36,7 @@ def new_search(request):
         if post.find(class_='result-image').get('data-ids'):
             post_image_id = post.find(class_='result-image').get('data-ids').split(',')[0].split(':')[1]
             post_image_url = BASE_IMAGE_URL.format(post_image_id)
-            print(post_image_url)
+            # print(post_image_url)
         else:
             post_image_url = 'https://craigslist.org/images/peace.jpg'
 

@@ -26,7 +26,7 @@ SECRET_KEY = 'dw+6o1ig6=m(@d4e_^oo5tbsp(aa$_e*ynhpt0thnhkycx4cqg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['craigslist-env.eba-sp3xfcxw.us-west-1.elasticbeanstalk.com']
 
 
 # Application definition

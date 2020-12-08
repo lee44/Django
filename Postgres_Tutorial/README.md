@@ -1,0 +1,1 @@
+The database for this Django project is postgresql

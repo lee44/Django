@@ -1,6 +1,6 @@
 1) Create a directory that will contain the project
 2) Create virtual environment (Mac:python3 -m venv env)
 3) Activate virtual environment (Mac:source env/bin/activate)
-3) Install Django (python -m pip install Django)
+3) Install Django (pip install Django)
 4) Create the project (django-admin startproject projectName_project)
 5) Create the app (python manage.py startapp projectName(lowercase))

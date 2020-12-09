@@ -11,7 +11,7 @@ def home(request):
       "todo_items": todo_items
     })
 
-@csrf_exempt
+@csrf_exempt # This decorator marks a view as being exempt from the protection ensured by the middleware
 def add_todo(request):
   current_date = timezone.now()
   content = request.POST["content"]

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+import json
 from .models import *
 
 def store(request):
@@ -14,7 +16,7 @@ def cart(request):
 		# Get all items in the order
 		items = order.orderitem_set.all()
 	else:
-		items == []
+		items = []
 		order = {'get_cart_total':0,'get_cart_item':0}
 
 	context = {'items':items,'order':order}
@@ -33,3 +35,16 @@ def checkout(request):
 
 	context = {'items':items,'order':order}
 	return render(request, 'store/checkout.html', context)
+
+def updateItem(request):
+	data = json.loads(request.body)
+	productId = data['productId']
+	action = data['action']
+
+	print('ProductId',productId,'Action',action)
+
+	customer = request.user.customer
+	product = Product.object.get(id=productId)
+	order, created = Order.object.get_or_create(customer=customer, complete=False)
+	
+	return JsonResponse('Item was added',safe=False)
